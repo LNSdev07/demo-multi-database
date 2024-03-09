@@ -45,7 +45,7 @@ public class UserDatasourceConfiguration {
              @Qualifier("userDatasource") DataSource dataSource) {
         return builder.dataSource(dataSource)
                 .packages("com.example.demomultidatabase.model.user")
-                .persistenceUnit("users").build();
+                .persistenceUnit("userslns").build();
     }
 
     @Primary
