@@ -50,7 +50,6 @@ public class UserDatasourceConfiguration {
 
     @Primary
     @Bean(name = "userTransactionManager")
-    @ConfigurationProperties("spring.jpa")
     public PlatformTransactionManager transactionManager(
             @Qualifier("userEntityManagerFactory") EntityManagerFactory entityManagerFactory) {
         return new JpaTransactionManager(entityManagerFactory);

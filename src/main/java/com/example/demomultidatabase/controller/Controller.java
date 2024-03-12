@@ -8,6 +8,7 @@ import lombok.Data;
 import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,8 +36,10 @@ public class Controller {
     }
 
     @PostMapping("/create-generate")
+    @Transactional
     public ResponseEntity createCommon(@RequestBody UserOrderRequest request
                                        ){
+        // nếu cả 2 transaction quản lý chung bởi 1 @Transaction thì khi có lỗi sẽ rollback
         User user = userRepo.save(request.getUser());
         Order order = orderRepo.save(request.getOrder());
         CommonResponse response = new CommonResponse();
