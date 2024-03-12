@@ -52,6 +52,7 @@ public class Controller {
     static class CommonResponse{
         private User user;
         private Order order;
+        
     }
 
     @Data
